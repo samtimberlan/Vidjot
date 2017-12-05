@@ -12,6 +12,10 @@ mongoose.connect("mongodb://localhost/vidjot-dev", {
 }).then(()=>{console.log('MongoDB Connected...')})
 .catch(err => console.log(err));
 
+//Load Idea Model
+require('./models/Idea');
+const Idea = mongoose.model('ideas');
+
 //Handlebars middleware
 app.engine(
   "handlebars",
@@ -27,10 +31,12 @@ app.get("/", (req, res) => {
   res.render("index", { title: title });
 });
 
+//About Route
 app.get("/about", (req, res) => {
   res.render("about");
 });
 
+//Server Connection
 const port = 5000;
 
 app.listen(port, () => {
