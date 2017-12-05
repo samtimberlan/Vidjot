@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const schema = mongoose.schema;
+const schema = mongoose.Schema;
 
 //Create Schema
-const IdeaSchema = new Schema({
+const IdeaSchema = new schema({
   title:{
     type: String,
     required: true
