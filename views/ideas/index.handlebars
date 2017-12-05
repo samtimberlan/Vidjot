@@ -1,0 +1,9 @@
+{{#each ideasProperty}}
+  <div class="card card-body mb-3">
+    <h4>{{title}}</h4>
+    <p>{{details}}</p>
+    <a href="/ideas/edit/{{id}}" class="btn btn-secondary">Edit</a>
+  </div>
+{{else}}
+<p>No Video ideas listed</p>
+{{/each}}

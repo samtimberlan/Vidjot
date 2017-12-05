@@ -7,6 +7,7 @@ const app = express();
 
 //Map global promise - get rid of warning
 mongoose.Promise = global.Promise;
+
 //Connect to Mongoose
 mongoose.connect("mongodb://localhost/vidjot-dev", {
   useMongoClient: true
@@ -41,12 +42,23 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
-//Add Idea Form
+//Idea Index Page
+app.get('/ideas', (req, res) => {
+  Idea.find({})
+    .sort({date:'desc'})
+    .then(ideas => {
+      res.render('ideas/index', {
+        ideasProperty: ideas
+      });
+    })
+});
+
+//GET - Add Idea Form
 app.get("/ideas/add", (req, res) => {
   res.render("ideas/add");
 });
 
-//Process Form
+//POST - Process Form
 app.post('/ideas', (req, res)=>{
   let errors = [];
   if(!req.body.title){
@@ -62,9 +74,29 @@ app.post('/ideas', (req, res)=>{
       details:req.body.details
     });
   } else{
-    res.send('passed');
+    const newUser = {
+      title: req.body.title,
+      details: req.body.details
+    }
+    new Idea(newUser)
+      .save()
+      .then(idea => {
+        res.redirect('/ideas');
+      })
   }
-})
+});
+
+//Edit Idea Form
+app.get("/ideas/edit/:id", (req, res) => {
+  Idea.findOne({
+    _id: req.params.id
+  })
+  .then(idea => {
+    res.render('ideas/edit', {
+      idea: idea
+    })
+  })
+});
 
 
 //Server Connection
