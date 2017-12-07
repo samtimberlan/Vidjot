@@ -1,8 +1,12 @@
 {{#each ideasProperty}}
-  <div class="card card-body mb-3">
+  <div class="card card-body mb-3 text-center">
     <h4>{{title}}</h4>
     <p>{{details}}</p>
-    <a href="/ideas/edit/{{id}}" class="btn btn-secondary">Edit</a>
+    <a href="/ideas/edit/{{id}}" class="btn btn-info">Edit</a>
+    <form action="/ideas/{{id}}?_method=DELETE" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-dangeer" value="Delete">
+    </form>
   </div>
 {{else}}
 <p>No Video ideas listed</p>
