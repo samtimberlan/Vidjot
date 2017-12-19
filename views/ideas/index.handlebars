@@ -2,10 +2,10 @@
   <div class="card card-body mb-3 text-center">
     <h4>{{title}}</h4>
     <p>{{details}}</p>
-    <a href="/ideas/edit/{{id}}" class="btn btn-info">Edit</a>
-    <form action="/ideas/{{id}}?_method=DELETE" method="post">
+    <a href="/ideas/edit/{{id}}" class="btn btn-dark">Edit</a>
+    <form action="/ideas/{{id}}?_method=DELETE" method="post" class="py-3">
       <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" class="btn btn-dangeer" value="Delete">
+      <input type="submit" class="btn btn-danger btn-block" value="Delete">
     </form>
   </div>
 {{else}}
