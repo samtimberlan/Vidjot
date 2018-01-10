@@ -13,7 +13,7 @@ module.exports = function(passport){
       email: email
     }).then(user => {
       if (!user){
-        return done(null, false, {message: 'Please register or log in.'});
+        return done(null, false, {message: 'Please register before logging in.'});
       }
 
       //Match password 

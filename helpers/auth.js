@@ -4,7 +4,7 @@ module.exports = {
       return next();
     }
     else{
-      req.flash('errorMsg', 'Not Authorized');
+      req.flash('errorMsg', 'Please login or register');
       res.redirect('/users/login');
     }
   }
