@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A simple application for your next video idea",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "repository": "https://github.com/samtimberlan/Vidjot.git",
   "author": "Tim Udoma",
   "license": "MIT",
