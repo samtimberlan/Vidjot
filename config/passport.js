@@ -13,7 +13,7 @@ module.exports = function(passport){
       email: email
     }).then(user => {
       if (!user){
-        return done(null, false, {message: 'No user found'});
+        return done(null, false, {message: 'Please signup'});
       }
 
       //Match password 
